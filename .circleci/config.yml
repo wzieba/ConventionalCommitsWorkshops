@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  danger:
+    docker:
+      - image: node:stretch-slim
+    steps:
+      - checkout
+      - run: yarn add danger --dev
+      - run: yarn danger ci
+
+workflows:
+  build-test-lint:
+    jobs:
+      - danger
+
